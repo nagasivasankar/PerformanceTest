@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>JMeter</groupId>
+	<artifactId>PerformanceDemo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Demo</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	 	<version.maven-install-plugin>2.5.2</version.maven-install-plugin>
+		<version.mysql-connector-java>1.0.0</version.mysql-connector-java> 
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+ <!-- 		<dependency>
+ 			 <groupId>mysql</groupId>
+ 			 <artifactId>mysql-connector-java</artifactId>
+ 			 <version>6.0.6</version>
+		</dependency> --> 
+	  <!--  <dependency>
+		<groupId>mysql</groupId>
+		<artifactId>connector-java</artifactId>
+		<version>${version.maven-install-plugin}</version>
+		<scope>system</scope>
+		<systemPath>${basedir}/lib/mysql-connector-java.jar</systemPath>
+	</dependency>  -->
+ <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.6</version>
+ </dependency>
+	</dependencies>
+	 <build>
+		<plugins>
+	<!--	 <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>${version.maven-install-plugin}</version>
+				<executions>
+					<execution>
+						<id>install-external-non-maven1-jar</id>
+						<phase>clean</phase>
+						<configuration>
+							<repositoryLayout>default</repositoryLayout>
+							<groupId>jar1.group</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+							<version>${version.mysql-connector-java}</version>
+							<file>${project.basedir}/libs/mysql-connector-java.jar</file>
+							<packaging>jar</packaging>
+							<generatePom>true</generatePom>
+						</configuration>
+						<goals>
+							<goal>install</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>  -->
+			<plugin>
+				<groupId>com.lazerycode.jmeter</groupId>
+				<artifactId>jmeter-maven-plugin</artifactId>
+				<version>2.7.0</version>
+				<executions>
+					<execution>
+						<id>jmeter-tests</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jmeter</goal>
+						</goals>
+						<configuration>
+							<jMeterProcessJVMSettings>
+								<xms>1024</xms>
+								<xmx>1024</xmx>
+								<arguments>
+									<argument>-Xprof</argument>
+									<argument>-Xfuture</argument>
+								</arguments>
+							</jMeterProcessJVMSettings>
+							<jmeterExtensions>
+								<artifact>com.blazemeter:jmeter-plugins-random-csv-data-set:0.6</artifact>
+								<artifact>kg.apc:jmeter-plugins-emulators:0.4</artifact>
+								<artifact>kg.apc:jmeter-plugins-cmn-jmeter:0.5</artifact>
+							</jmeterExtensions>
+							<downloadExtensionDependencies>false</downloadExtensionDependencies>
+							<testFilesIncluded>
+								<jMeterTestFile>NIOWeb25092018.jmx</jMeterTestFile>
+							</testFilesIncluded>
+							<testResultsTimestamp>false</testResultsTimestamp>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			</plugins>
+	</build>
+</project>

@@ -1,0 +1,6 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect
+1538564260835,14368,JDBC Request,200,OK,NIO_S01_FMPlannedTrip 1-1,text,true,,9,0,1,1,14368,0,14087
+1538564275209,2881,NIO_S01_FMPlannedTrip_Login,200,"Number of samples in transaction : 2, number of failing samples : 0",NIO_S01_FMPlannedTrip 1-1,,true,,4549,2562,1,1,0,124,0
+1538564278184,2426,NIO_S01_FMPlannedTrip_Home,200,"Number of samples in transaction : 3, number of failing samples : 0",NIO_S01_FMPlannedTrip 1-1,,true,,26716,5152,1,1,0,57,0
+1538564280667,8852,NIO_S01_FMPlannedTrip_SelectRoute,200,"Number of samples in transaction : 1, number of failing samples : 0",NIO_S01_FMPlannedTrip 1-1,,true,,3582038,1050,1,1,0,3,0
+1538564289523,4324,NIO_S01_FMPlannedTrip_Planned Trip Creation,503,"Number of samples in transaction : 1, number of failing samples : 1",NIO_S01_FMPlannedTrip 1-1,,false,,1713,1287,1,1,0,3,0
